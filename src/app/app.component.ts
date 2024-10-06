@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { HeaderComponent } from './header/header.component';
 import { InvestmentFormComponent } from './investment-form/investment-form.component';
@@ -17,6 +17,7 @@ export class AppComponent {
   annualData: AnnualDataModel[] = [];
 
   calculateInvestmentResults(data: InvestmentFormModel) {
+    this.annualData = [];
     let investmentValue = data.initialInvestment;
 
     for (let i = 0; i < data.duration; i++) {

@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Output, output } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { InvestmentFormModel } from './investment-form.model';
 
 @Component({
@@ -11,8 +11,17 @@ import { InvestmentFormModel } from './investment-form.model';
 })
 export class InvestmentFormComponent {
   @Output() investmentEvent = new EventEmitter<InvestmentFormModel>();
+  initialInvestment = 0;
+  annualInvestment = 0;
+  expectedReturn = 0;
+  duration = 0;
 
-  onCalculate(form: NgForm) {
-    this.investmentEvent.emit(form.value);
+  onCalculate() {
+    this.investmentEvent.emit({
+      initialInvestment: this.initialInvestment,
+      annualInvestment: this.annualInvestment,
+      expectedReturn: this.expectedReturn,
+      duration: this.duration,
+    });
   }
 }
